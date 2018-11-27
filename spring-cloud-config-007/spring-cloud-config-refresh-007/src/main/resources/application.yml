@@ -1,0 +1,16 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: spring-cloud-config-refresh-007
+  #cloud:
+   # config:
+   #   refreshInterval: 12
+logging:
+  level:
+    root: debug
+
+  devtools:
+    livereload:
+      port: 35730

@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: spring-cloud-zuul-server-005
+server:
+  port: 6001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:127.0.0.1}:${eureka.port:7001}/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    client-a:
+      path: /api/**
+      serviceId: spring-cloud-provider-005
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      access-token-uri: http://localhost:8001/uaa/oauth/token #令牌端点
+      user-authorization-uri: http://localhost:8001/uaa/oauth/authorize #授权端点
+      client-id: spring-cloud-zuul-server-005 #OAuth2客户端ID
+      client-secret: secret #OAuth2客户端密钥
+    resource:
+      jwt:
+        key-value: springcloud123 #使用对称加密方式，默认算法为HS256
+
+  #超时配置
+####超时配置####
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000

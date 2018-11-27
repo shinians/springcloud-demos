@@ -1,0 +1,9 @@
+spring:
+    cloud:
+        config:
+            label: master
+            uri: http://localhost:7002
+            name: limp-config
+            profile: dev
+
+

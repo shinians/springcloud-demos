@@ -1,0 +1,12 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: springcloud-autoconfig-client-refresh-007
+  cloud:
+    config:
+      refreshInterval: 12
+logging:
+  level:
+    root: debug

@@ -1,0 +1,11 @@
+#优先级别比较高，通常此处定义参数，application.yml中使用，如果两个都定义了端口，则application.yml中的端口生效
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/

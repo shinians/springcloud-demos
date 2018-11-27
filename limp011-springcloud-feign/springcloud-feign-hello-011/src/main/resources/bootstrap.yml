@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: springcloud-feign-hello-011
+  profiles:
+    active: okhttp
+logging:
+  level:
+    com.limp: debug
+
+

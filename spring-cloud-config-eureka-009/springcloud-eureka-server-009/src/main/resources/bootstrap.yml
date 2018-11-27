@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: springcloud-eureka-server-009
+  cloud:
+    config:
+      uri: http://localhost:9002
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

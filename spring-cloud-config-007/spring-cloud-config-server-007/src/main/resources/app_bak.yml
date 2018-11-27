@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/XXX/spring-cloud-config
+          search-paths: XXXX
+          repos:
+            simple: https://gitee.com/XXX/simple
+            special:
+                pattern: special*/dev*,*special*/dev*
+                uri: https://gitee.com/zhongzunfa/spring-cloud-config-special
+            local:
+              pattern: local*
+              uri: /Users/XXX/all_test/spring-cloud-config
+
+  application:
+    name: test
+server:
+    port: 9090
+logging:
+  level:
+    root: debug

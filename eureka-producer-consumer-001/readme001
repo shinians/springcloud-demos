@@ -1,0 +1,54 @@
+/********************************   demo001     ***********************************/
+介绍：
+eureka-producer-consumer-001:
+主要是consumer、provider、eureka三者之间的调用关系
+
+
+操作步骤：
+ 依次启动eureka注册中心 、 生产者、消费者
+
+ 1.访问eureka页面 http://localhost:7001/ 可以看到注册的生产者和消费者
+ 2.访问消费者--》http://localhost:9001/hello/XXXX 即可实现消费者调用生产者的简单实现
+
+ 3：生产者调用地址---》http://localhost:8001/hello?name=zs
+
+
+ /*******架构设计***************/
+ 1.生产者的controller 设计上可以与 消费者的controller请求有所不同（如此demo）
+     生产者：http://localhost:8001/hello?name=zs
+     消费者：http://localhost:9001/hello/XXXX
+ 2.消费者controller符合restfull风格
+
+ 3.springcloud 2.x升级坑（如pom引入jar的文件）
+      /*******************feign 1.X版本引入******************/
+          feign 1.X版本引入是如下方式
+           <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+            </dependency>
+     /*******************feign 2.X版本引入******************/
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+ 		</dependency>
+ 	  /*******************  热部署引入 ******************/
+ 	  		<dependency>
+      			<groupId>org.springframework.boot</groupId>
+      			<artifactId>spring-boot-devtools</artifactId>
+      			<scope>runtime</scope>
+      		</dependency>
+
+4.消费者调用
+1）pom文件引入相应的jar
+    spring-cloud-starter-feign、spring-cloud-starter-netflix-eureka-server
+
+2.启动类SpringCloudConsumerApplication 添加注解
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients
+3.创建HelloService 接口类并添加生产者的name，参考此类
+@FeignClient(name= "spring-cloud-producer")
