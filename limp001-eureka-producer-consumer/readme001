@@ -8,6 +8,7 @@ eureka-producer-consumer-001:
  依次启动eureka注册中心 、 生产者、消费者
 
  1.访问eureka页面 http://localhost:7001/ 可以看到注册的生产者和消费者
+
  2.访问消费者--》http://localhost:9001/hello/XXXX 即可实现消费者调用生产者的简单实现
 
  3：生产者调用地址---》http://localhost:8001/hello?name=zs
