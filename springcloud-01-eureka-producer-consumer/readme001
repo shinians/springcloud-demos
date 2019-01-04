@@ -49,7 +49,7 @@ eureka-producer-consumer-001:
 
 2.启动类SpringCloudConsumerApplication 添加注解
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableFeignClients
 3.创建HelloService 接口类并添加生产者的name，参考此类
 @FeignClient(name= "spring-cloud-producer")

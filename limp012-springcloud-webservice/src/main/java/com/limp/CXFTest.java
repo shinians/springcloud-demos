@@ -20,7 +20,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class CXFTest {
-	private static  String   wsdlUrl="http://localhost:8001/demo/HelloServiceDemoUrl?wsdl";
+//	private static  String   wsdlUrl="http://localhost:8001/demo/HelloServiceDemoUrl?wsdl";
+	private static  String   wsdlUrl="http://192.168.1.15/csp/i-lis/DHC.LIS.BS.WebLisService.cls?wsdl";
 //	private static final QName SERVICE_NAME = new QName("namespace", "serviceName");
 	private static final QName SERVICE_NAME = new QName("http://service.limp.com/", "HelloServiceDemo");
 
@@ -53,6 +54,9 @@ public class CXFTest {
 		listParam1.add("lisi");
 		listParam1.add(6);
 
+		List<Object> listParam11=new ArrayList<>();
+		listParam11.add("12");
+
 		/////
 		List<Object> listParam4=new ArrayList<>();
 		OrderInfo orderInfo1=new OrderInfo();
@@ -75,13 +79,14 @@ public class CXFTest {
 		for(int i=0;i<2;i++){
 			Long start=System.currentTimeMillis();
 			//多个参数情况
-			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"sayHello2", "http://service.limp.com/","HelloServiceDemo",listParam1));
+			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"SendLinkLabNoWithOrdRowId",
+					"http://tempuri.org","HelloServiceDemo",listParam11));
 			//单个对象
-			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"selectOrderInfo", "http://service.limp.com/","HelloServiceDemo",listParam));
+//			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"selectOrderInfo", "http://service.limp.com/","HelloServiceDemo",listParam));
 			//多个对象
-			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"selectOrderInfoAndOrderDetail", "http://service.limp.com/","HelloServiceDemo",listParam2));
+//			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"selectOrderInfoAndOrderDetail", "http://service.limp.com/","HelloServiceDemo",listParam2));
 			//集合测试
-			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"getOrderList", "http://service.limp.com/","HelloServiceDemo",listParam4));
+//			System.out.println(dynamicCallWebServiceByCXF(wsdlUrl,"getOrderList", "http://service.limp.com/","HelloServiceDemo",listParam4));
 
 			//net创建的webservice通过其他方式获取
 //			System.out.println(dynamicCallWebServiceByCXF("http://www.webxml.com.cn/WebServices/WeatherWebService.asmx?wsdl","getSupportCity",
@@ -103,7 +108,7 @@ public class CXFTest {
 		Object[] objects = new Object[0];
 		try {
 			// invoke("方法名",参数1,参数2,参数3....);
-			objects = client.invoke("sayHello", "张三");
+			objects = client.invoke("sayHello", "张三","lis");
 			System.out.println("返回数据:" + objects[0]);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -193,7 +198,8 @@ public class CXFTest {
 		// Make use of CXF service model to introspect the existing WSDL
 		ServiceInfo serviceInfo = endpoint.getService().getServiceInfos().get(0);
 		// 创建QName来指定NameSpace和要调用的service
-		String localPart=name+"SoapBinding";
+//		String localPart=name+"SoapBinding";//{http://tempuri.org}WebLisServiceSoap
+		String localPart="WebLisServiceSoap";//{http://tempuri.org}WebLisServiceSoap
 		QName bindingName = new QName(targetNamespace, localPart);
 		BindingInfo binding = serviceInfo.getBinding(bindingName);
 
