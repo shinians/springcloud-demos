@@ -7,7 +7,7 @@
   * 文章链接
   1.SpringCloud 极简入门 | 微服务与SpringCloud概念和组件最全集锦，第一讲必须了解你是谁？ 
   https://blog.csdn.net/zzhuan_1/article/details/85729827
-  
+    
   2.SpringCloud极简入门 | 第二讲: 服务消费者通过注册中心调用生产者（方式一:RestTemplate、Ribbon）(F版本)
   https://blog.csdn.net/zzhuan_1/article/details/85810501
   
