@@ -17,4 +17,7 @@ zuul:
     baidu:
       path: /bd/**
       url: http://www.baidu.com
+    baiduforward:
+          path: /testforward/**
+          serviceId: spring-cloud-producter2-002
 

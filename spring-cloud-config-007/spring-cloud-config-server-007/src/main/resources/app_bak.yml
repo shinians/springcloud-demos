@@ -9,7 +9,7 @@ spring:
             simple: https://gitee.com/XXX/simple
             special:
                 pattern: special*/dev*,*special*/dev*
-                uri: https://gitee.com/zhongzunfa/spring-cloud-config-special
+                uri: https://gitee.com/XX/spring-cloud-config-special
             local:
               pattern: local*
               uri: /Users/XXX/all_test/spring-cloud-config
